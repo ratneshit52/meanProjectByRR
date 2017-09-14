@@ -1,0 +1,26 @@
+<div class="panel panel-default bodyCenter">
+    <div class="panel-heading">Register</div>
+    <form action="" (submit)="onRegisterSubmit()">
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" name="name" id="" class="form-control" [(ngModel)]="name" />
+            </div>
+            <div class="form-group">
+                <label for="">Username</label>
+                <input type="text" name="username" [(ngModel)]="username" id="" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="">Email</label>
+                <input type="email" name="email" [(ngModel)]="email" id="" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="">Password</label>
+                <input type="password" name="password" [(ngModel)]="password" id="" class="form-control" />
+            </div>
+        </div>
+        <div class="panel-footer">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
