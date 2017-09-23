@@ -1,3 +1,21 @@
-<p>
-  profile works!
-</p>
+<div *ngIf="user">
+    <div class="panel panel-default bodyCenter">
+        <div class="panel-heading">{{user.name}}</div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-6">Username: </div>
+                        <div class="col-xs-6">{{user.username}}</div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-6">Email: </div>
+                        <div class="col-xs-6">{{user.email}}</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

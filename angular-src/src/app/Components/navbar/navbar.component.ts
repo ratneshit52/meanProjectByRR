@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "../../Services/auth.service";
-import { Router } from "@angular/router";
+import { AuthService } from '../../Services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(  
+  constructor(
     private authService: AuthService,
     private router: Router
   ) { }
@@ -17,10 +17,11 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  // tslint:disable-next-line:one-line
   onLogoutClick(){
     this.authService.logout();
     localStorage.clear();
-    alert("You are successfull logout.");
     this.router.navigate(['login']);
   }
 

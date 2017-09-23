@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../Services/auth.service';
 import { ValidateService } from '../../Services/validate.service';
 import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-register',
@@ -17,13 +18,14 @@ export class RegisterComponent implements OnInit {
   constructor(
     private validateServices: ValidateService,
     private authService: AuthService,
-    private route: Router
+    private route: Router,
+    private _flashMessagesService: FlashMessagesService
   ) { }
 
   ngOnInit() {
   }
 
-  onRegisterSubmit(){
+  onRegisterSubmit() {
     // console.log("Test Here :  " + this.name);
     const user = {
       name: this.name,
@@ -33,26 +35,27 @@ export class RegisterComponent implements OnInit {
     }
 
     // Reqired field Code
-    if(!this.validateServices.validateRegister(user)){
-      alert('Please fill in all fields...!');
+    if (!this.validateServices.validateRegister(user)) {
+      this._flashMessagesService.show('Please fill in all fields...!', {cssClass: 'alert-warning', timeout: 1000});
       return false;
     }
 
-    if(!this.validateServices.validataEmail(user.email)){
-      alert('Please use valid Email...!');
+    if (!this.validateServices.validataEmail(user.email)) {
+      this._flashMessagesService.show('Please use valid Email...!', {cssClass: 'alert-warning', timeout: 1000});
       return false;
     }
 
     // Register user
     this.authService.registerUser(user).subscribe(data => {
-      if(data.success) {
-        alert('You are successfully register now continew with login...!');
+      if (data.success) {
+        // tslint:disable-next-line:max-line-length
+        this._flashMessagesService.show('You are successfully register now continew with login...!', { cssClass: 'alert-success', timeout: 1000});
         this.route.navigate(['/login']);
       } else {
-        alert('Oopss! Some Problem with registration. Try again...!');
+        this._flashMessagesService.show('Oopss! Some Problem with registration. Try again...!', { cssClass: 'alert-danger', timeout: 1000});
         this.route.navigate(['/register']);
       }
-    })    
+    });
   }
 
 }

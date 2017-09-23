@@ -26,6 +26,7 @@ const users = require('./routes/users');
 
 //Port Number
 const port = 3000;
+// const port = process.env.PORT || 8080;
 
 //Core Middleware
 app.use(cors());
@@ -47,6 +48,11 @@ app.use('/users', users);
 //Index Route
 app.get('/', function(req, res) {
     res.send("Hello Word!!!");
+});
+
+//Other Pages
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'Public/index.html'));
 });
 
 //Start Server
