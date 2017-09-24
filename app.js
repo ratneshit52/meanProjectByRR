@@ -25,8 +25,8 @@ const app = express();
 const users = require('./routes/users');
 
 //Port Number
-const port = 3000;
-// const port = process.env.PORT || 8080;
+// const port = 3000;
+const port = process.env.PORT || 8080;
 
 //Core Middleware
 app.use(cors());
